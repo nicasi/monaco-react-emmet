@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Editor from "@monaco-editor/react";
+import { emmetHTML } from "emmet-monaco-es";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Editor
+      height="400px"
+      defaultLanguage="html"
+      theme="vs-dark"
+      beforeMount={(monaco) => {
+        emmetHTML(monaco);
+      }}
+    />
   );
 }
-
-export default App;
